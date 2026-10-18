@@ -29,6 +29,8 @@ export default function App() {
         <Route path="login" element={<Login />} />
         <Route path="activities" element={<ActivitiesPage />} />
         <Route path="activities/:id" element={<ActivityPage />} />
+        <Route path="routines" element={<RoutinesPage />} />
+        <Route path="routines/:id" element={<RoutinePage />} />
         <Route path="*" element={<Error404 />} />
       </Route>
     </Routes>
