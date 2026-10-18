@@ -1,5 +1,5 @@
-import { usePage } from "./layout/PageContext";
-
+//import { usePage } from "./layout/PageContext";
+import Layout from "./layout/Layout";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import ActivitiesPage from "./activities/ActivitiesPage";
@@ -23,7 +23,7 @@ export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<ActivitiesPage />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="activities" element={<ActivitiesPage />} />
