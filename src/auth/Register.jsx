@@ -19,7 +19,7 @@ export default function Register() {
     try {
       await register({ username, password });
       // setPage("activities");
-      navigate("activities");
+      navigate("/activities");
     } catch (e) {
       setError(e.message);
     }
@@ -43,7 +43,7 @@ export default function Register() {
       {/* <a onClick={() => setPage("login")}>
         Already have an account? Log in here.
       </a> */}
-      <Link to="/Login">Already have an account? Log in here.</Link>
+      <Link to="/login">Already have an account? Log in here.</Link>
     </>
   );
 }

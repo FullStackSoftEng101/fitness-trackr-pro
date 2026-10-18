@@ -18,7 +18,7 @@ export async function getActivity(id) {
     return result;
   } catch (e) {
     console.error(e);
-    throw e;
+    setError(e.message);
   }
 }
 
@@ -61,7 +61,9 @@ export async function deleteActivity(token, id) {
   });
 
   if (!response.ok) {
-    const result = await response.json();
-    throw Error(result.message);
+    const message = await response.text();
+
+    throw Error(message);
   }
+  return null;
 }

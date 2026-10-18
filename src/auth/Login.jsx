@@ -19,7 +19,7 @@ export default function Login() {
     try {
       await login({ username, password });
       // setPage("activities");
-      navigate("activities");
+      navigate("/activities");
     } catch (e) {
       setError(e.message);
     }

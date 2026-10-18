@@ -22,9 +22,11 @@ export function AuthProvider({ children }) {
       body: JSON.stringify(credentials),
     });
     const result = await response.json();
+
     if (!response.ok) {
       throw Error(result.message);
     }
+
     setToken(result.token);
   };
 
@@ -35,9 +37,11 @@ export function AuthProvider({ children }) {
       body: JSON.stringify(credentials),
     });
     const result = await response.json();
+
     if (!response.ok) {
       throw Error(result.message);
     }
+
     setToken(result.token);
   };
 
