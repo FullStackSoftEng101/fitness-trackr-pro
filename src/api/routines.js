@@ -36,7 +36,7 @@ export async function createRoutine(token, routine) {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
     },
-    body: JSON.stringify(activity),
+    body: JSON.stringify(routine),
   });
 
   if (!response.ok) {

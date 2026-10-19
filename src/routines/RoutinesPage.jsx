@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getRoutines } from "../api/routines";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
+import RoutinesList from "./RoutinesList";
+import RoutineForm from "./RoutineForm";
 
 export default function RoutinesPage() {
   const [routines, setRoutines] = useState([]);
@@ -17,15 +19,8 @@ export default function RoutinesPage() {
     <>
       <div>
         <h1>Routines</h1>
-
-        {routines.lenght === 0 && <p>No routines found</p>}
-        <ul>
-          {routines.map((routine) => (
-            <li key={routine.id}>
-              <Link to={`/routines/${routine.id}`}>{routine.name}</Link>
-            </li>
-          ))}
-        </ul>
+        <RoutinesList routines={routines} />
+        <RoutineForm syncRoutines={syncRoutines} />
       </div>
     </>
   );
