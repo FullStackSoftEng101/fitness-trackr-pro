@@ -17,6 +17,12 @@ export default function Navbar() {
         >
           Activities
         </NavLink>
+        <NavLink
+          to="/routines"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Routines
+        </NavLink>
         {token ? (
           <a onClick={() => logout()}>Log out</a>
         ) : (

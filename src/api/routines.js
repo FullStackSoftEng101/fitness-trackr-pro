@@ -25,9 +25,9 @@ export async function getRoutine(id) {
  * Sends a new activity to the API to be created.
  * A valid token is required.
  */
-export async function createRoutine(token, activity) {
+export async function createRoutine(token, routine) {
   if (!token) {
-    throw Error("You must be signed in to create an activity.");
+    throw Error("You must be signed in to create an routine.");
   }
 
   const response = await fetch(API + "/routines", {
@@ -51,7 +51,7 @@ export async function createRoutine(token, activity) {
  */
 export async function deleteRoutine(token, id) {
   if (!token) {
-    throw Error("You must be signed in to delete an activity.");
+    throw Error("You must be signed in to delete an routine.");
   }
 
   const response = await fetch(API + "/routines/" + id, {
