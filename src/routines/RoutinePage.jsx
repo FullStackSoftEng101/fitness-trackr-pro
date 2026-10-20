@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { deleteRoutine, getRoutine } from "../api/routines";
+import { deleteRoutine, deleteSets, getRoutine } from "../api/routines";
 import { useAuth } from "../auth/AuthContext";
+import SetForm from "./SetForm";
 
 export default function RoutinePage() {
   const { id } = useParams();
@@ -41,6 +42,22 @@ export default function RoutinePage() {
       <p>Created by : {routine.creatorName}</p>
       {token && <button onClick={tryDelete}>Delete</button>}
       {error && <p role="alert">{error}</p>}
+
+      <h2>Sets</h2>
+      {routine.sets.length === 0 ? (
+        <p>No sets -add one below!</p>
+      ) : (
+        <ul>
+          {routine.sets.map((set) => (
+            <li key={set.id}>
+              {set.name} x {set.count} reps
+              {token && <button onClick={tryDeleteSet}> Delete </button>}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <SetForm routineId={id} syncRoutine={syncRoutine} />
     </>
   );
 }
