@@ -33,7 +33,16 @@ export default function RoutinePage() {
       setError(e.message);
     }
   };
+  const tryDeleteSet = async (setId) => {
+    setError(null);
 
+    try {
+      await deleteSets(token, setId);
+      await syncRoutine(id); // refresh routine after deleting set
+    } catch (e) {
+      setError(e.message);
+    }
+  };
   if (!routine) return <p>Loading...</p>;
   return (
     <>
@@ -51,7 +60,9 @@ export default function RoutinePage() {
           {routine.sets.map((set) => (
             <li key={set.id}>
               {set.name} x {set.count} reps
-              {token && <button onClick={tryDeleteSet}> Delete </button>}
+              {token && (
+                <button onClick={() => tryDeleteSet(set.id)}> Delete </button>
+              )}
             </li>
           ))}
         </ul>
